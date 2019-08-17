@@ -1,0 +1,42 @@
+<div class="card">
+    <div class="card-header">
+        Quiz summary
+    </div>
+    <div class="card-body">
+        <table cellspacing="5px">
+            <tr *ngFor="let a of answers">
+                <td>
+                    <button type="button" class="btn btn-info"><b>Q</b>.{{ a.id }}</button>
+                </td>
+                <td>
+                    <button (click)="onClickMe(a.id, 1)" type="button"
+                        [className]="!a.answer_A ? 'btn btn-light' : 'btn btn-success'">A</button>
+                </td>
+                <td>
+                    <button (click)="onClickMe(a.id, 2)" type="button"
+                        [className]="!a.answer_B ? 'btn btn-light' : 'btn btn-success'">B</button>
+                </td>
+                <td>
+                    <button (click)="onClickMe(a.id, 3)" type="button"
+                        [className]="!a.answer_C ? 'btn btn-light' : 'btn btn-success'">C</button>
+                </td>
+                <td>
+                    <button (click)="onClickMe(a.id, 4)" type="button"
+                        [className]="!a.answer_D ? 'btn btn-light' : 'btn btn-success'">D</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#finish"
+                        (click)="onClickFinish()">Finish</button>
+                </td>
+                <td colspan="2" style="text-align: center">
+                    <button type="button" class="btn btn-warning" (click)="onClickReset()">Reset</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

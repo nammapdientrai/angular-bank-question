@@ -1,0 +1,153 @@
+<div class="container-fluid">
+    <header>
+        <!-- NAVIGATION : START -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Quiz summary</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Books
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">AWS Certified Solutions Architect OFFICIAL STUDY GUIDE</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- NAVIGATION : END -->
+    </header>
+    <div class="content" style="margin: 5px 0px">
+        <!-- HOME : START -->
+        <div *ngIf="status == 1">
+            <img src="/assets/images/AWS-Certification.png" class="rounded" width="100%">
+        </div>
+        <!-- HOME : END -->
+
+        <!-- QUIZ SUMMARY : START -->
+        <div *ngIf="status == 0" class="row">
+            <div class="menu-bar col col col-lg-3" style="padding-top: 10px">
+                <div class="card">
+                    <div class="card-header">
+                        Quiz summary
+                    </div>
+                    <div class="card-body">
+                        <!-- TABLE ANSWER : START -->
+                        <table cellspacing="5px">
+                            <tr *ngFor="let a of answers">
+                                <td>
+                                    <button type="button" class="btn btn-info"><b>Q</b>.{{ a.id }}</button>
+                                </td>
+                                <td>
+                                    <button (click)="onClickMe(a.id, 1)" type="button"
+                                        [className]="!a.answer_A ? 'btn btn-light' : 'btn btn-success'">A</button>
+                                </td>
+                                <td>
+                                    <button (click)="onClickMe(a.id, 2)" type="button"
+                                        [className]="!a.answer_B ? 'btn btn-light' : 'btn btn-success'">B</button>
+                                </td>
+                                <td>
+                                    <button (click)="onClickMe(a.id, 3)" type="button"
+                                        [className]="!a.answer_C ? 'btn btn-light' : 'btn btn-success'">C</button>
+                                </td>
+                                <td>
+                                    <button (click)="onClickMe(a.id, 4)" type="button"
+                                        [className]="!a.answer_D ? 'btn btn-light' : 'btn btn-success'">D</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: center">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#finish" (click)="onClickFinish()">Finish</button>
+                                </td>
+                                <td colspan="2" style="text-align: center">
+                                    <button type="button" class="btn btn-warning"
+                                        (click)="onClickReset()">Reset</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- TABLE ANSWER : END -->
+                    </div>
+                </div>
+            </div>
+            <div class="questions col col col-lg-9" style="padding-top: 10px">
+                <!-- INSTRODUCTION : START -->
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Chapter 0</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Instroduction AWS Certificate</h6>
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- INSTRODUCTION : END -->
+                <br>
+                <!-- LIST QUESTIONS : START -->
+                <div style="padding-top: 10px">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Chapter 1</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Example 01</h6>
+                            <br>
+                            <div class="list-questions" *ngFor="let q of questions">
+
+                                <div class="question01">
+                                    <div><b><i>Question {{ q.q_id }}:</i></b></div>
+                                    <div>
+                                        <p>
+                                            {{ q.q_content }}
+                                        </p>
+                                    </div>
+                                    <div style="padding-left: 25px">
+                                        <table>
+                                            <tr>
+                                                <td><b>A.</b></td>
+                                                <td>{{ q.q_a }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>B.</b></td>
+                                                <td>{{ q.q_b }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>C.</b></td>
+                                                <td>{{ q.q_c }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>D.</b></td>
+                                                <td>{{ q.q_d }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- LIST QUESTIONS : END -->
+            </div>
+        </div>
+        <!-- QUIZ SUMMARY : END -->
+    </div>
+</div>

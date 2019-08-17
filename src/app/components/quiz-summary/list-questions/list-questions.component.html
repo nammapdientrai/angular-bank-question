@@ -1,0 +1,41 @@
+<div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Chapter 1</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Example 01</h6>
+            <br>
+            <div class="list-questions" *ngFor="let q of questions">
+
+                <div class="question01">
+                    <div><b><i>Question {{ q.q_id }}:</i></b></div>
+                    <div>
+                        <p>
+                            {{ q.q_content }}
+                        </p>
+                    </div>
+                    <div style="padding-left: 25px">
+                        <table>
+                            <tr>
+                                <td><b>A.</b></td>
+                                <td>{{ q.q_a }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>B.</b></td>
+                                <td>{{ q.q_b }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>C.</b></td>
+                                <td>{{ q.q_c }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>D.</b></td>
+                                <td>{{ q.q_d }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
